@@ -110,7 +110,7 @@ int main (int ac, const char **av)
     //again no error management
     pid_t pid;
     struct user_regs_strcut regs;
-    unsinged short type = 0;
+    unsigned short type = 0;
     if (ac < 2)
         return (84);
     pid = fork();
@@ -139,7 +139,7 @@ int main (int ac, const char **av)
     pid_t pid;
     struct user_regs_strcut regs;
     int status = 0;
-    unsinged short type = 0;
+    unsigned short type = 0;
     if (ac < 2)
         return (84);
     pid = fork();
@@ -186,7 +186,7 @@ int main (int ac, const char **av)
     pid_t pid;
     struct user_regs_strcut regs;
     int status = 0;
-    unsinged short type = 0;
+    unsigned short type = 0;
     if (ac < 2)
         return (84);
     pid = fork();
