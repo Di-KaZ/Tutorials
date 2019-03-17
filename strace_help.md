@@ -45,6 +45,7 @@ int main (int ac, const char **av)
 }
 ```
 The pid is going to be really important, he gonna help us *trace* the program with the help of [ptrace()](http://manpagesfr.free.fr/man/man2/ptrace.2.html) !
+For the pid you don't need to excute it you just need to trace it with the pid passed as parameter of your main function.
 
 Ptrace
 ======
