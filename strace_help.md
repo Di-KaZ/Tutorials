@@ -149,7 +149,7 @@ int main (int ac, const char **av)
     }
     else {
         waitpid(pid, &status, 0);
-        // this loop check if the child still is running stopped if it is the case we coninue to loop all instructions
+        // this loop check if the child is still running stopped if it is the case we coninue to loop all instructions
         while (WIFSTOPPED(status) && (WSTOPSIG(status) == SIGTRAP|| WSTOPSIG(status) == SIGSTOP)) {
             ptrace(PTRACE_GETREGS, pid, NULL, &regs);
             type = ptrace(PTRACE_PEEKTEXT, pid, regs.rip/* this what is used to know if it's a syscall*/, NULL);
