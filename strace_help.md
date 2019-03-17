@@ -171,9 +171,9 @@ Ok for this part i'm gonna do everything since it's easy, in the last part we go
 We are going to use it to display all syscall to write, but first I need to learn you thing about this structure field :
 
 *struct user_regs_struct regs filed that we gonna use*
-|syscall id  |return value|arg 1       |arg 2       |arg 3       |arg 4       |arg 5       |
-|rax         |rdi         |rsi         |rdx         |r8          |r9          |r10         |
-|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| syscall id   | return value | arg 1        | arg 2        | arg 3        | arg 4        | arg 5        |
+| rax          | rdi          | rsi          | rdx          | r8           | r9           | r10          |
+| :----------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: |
 
 We that in mind let's display the call of write :
 
