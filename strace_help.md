@@ -109,7 +109,7 @@ int main (int ac, const char **av)
 {
     //again no error management
     pid_t pid;
-    struct user_regs_strcut regs;
+    struct user_regs_struct regs;
     unsigned short type = 0;
     if (ac < 2)
         return (84);
@@ -137,7 +137,7 @@ int main (int ac, const char **av)
 {
     //again no error management
     pid_t pid;
-    struct user_regs_strcut regs;
+    struct user_regs_struct regs;
     int status = 0;
     unsigned short type = 0;
     if (ac < 2)
@@ -184,7 +184,7 @@ int main (int ac, const char **av)
 {
     //again no error management
     pid_t pid;
-    struct user_regs_strcut regs;
+    struct user_regs_struct regs;
     int status = 0;
     unsigned short type = 0;
     if (ac < 2)
