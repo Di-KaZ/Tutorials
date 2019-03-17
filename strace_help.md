@@ -1,4 +1,5 @@
-#strace in c tutorial
+strace in c tutorial
+===================
 
 So you are wondering how to do an strace like program in c ?
 Well I can help you !
@@ -10,7 +11,8 @@ First of all for this tutorial you will need :
 
 If you have all of that welcome aboard !
 
-##Getting started
+Getting started
+==============
 
 The goal is to create a program able to print all *syscall* of a given *binary* or *pid* like this :
 ```
@@ -19,7 +21,8 @@ The goal is to create a program able to print all *syscall* of a given *binary* 
 with that in mind we need a parser for arg, since you are in tech 2 i'll asume that you know how to do it.
 When this is done we can go deeper !
 
-##Binary or pid ?
+Binary or pid ?
+==============
 
 If we pass a binary in args we should excute it with [fork()](http://manpagesfr.free.fr/man/man2/fork.2.html) and [exec family function](http://manpagesfr.free.fr/man/man3/exec.3.html), but is it's an pid that we recive we don't have to execute it beacause he is aleready in execution.
 Here is a sample code using fork() function:
@@ -43,7 +46,9 @@ int main (int ac, const char **av)
 ```
 The pid is going to be really important, he gonna help us *trace* the program with the help of [ptrace()](http://manpagesfr.free.fr/man/man2/ptrace.2.html) !
 
-##Ptrace
+Ptrace
+======
+
 When you become familiar with exec and fork it's time to use [ptrace()](http://manpagesfr.free.fr/man/man2/ptrace.2.html) !
 Some of its flag are going to be useful for us since we can't use *PTRACE_SYSCALL*.
 here is a list :
@@ -59,7 +64,8 @@ here is a list :
 
 we that in mind I know that you can see were we are going !
 
-###The child
+The child
+========
 
 Reusing the code from the above fork sample code we now have to trace our child with...*PTRACE_TRACEME* :
 
@@ -83,7 +89,8 @@ int main (int ac, const char **av)
 
 this is all we have to do for the child !
 
-###The Parent
+The Parent
+==========
 
 Let's get right into it guy's !
 Now that we have a tracer on th child it's time to use it.
@@ -157,7 +164,8 @@ int main (int ac, const char **av)
 
 when it's done WP you are tracing all the syscall of the program the last thing to do is to display them...
 
-##Displaying syscall
+Displaying syscall
+=================
 
 Ok for this part i'm gonna do everything since it's easy, in the last part we got the register using *PTRACE_GETREGS*.
 We are going to use it to display all syscall to write, but first I need to learn you thing about this structure field :
