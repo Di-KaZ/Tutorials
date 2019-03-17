@@ -36,7 +36,7 @@ int main (int ac, const char **av)
         return (84);
     pid = fork();
     if (pid == 0) { // if pid == 0 this is the child
-        execvp(av[1], av + 1); // av[1] = name of the command && av + 1 args after without the name of the binary
+        execvp(av[1], (char * const *)av + 1); // av[1] = name of the command && av + 1 args after without the name of the binary
     }
     else { // this is the parent
 
@@ -79,7 +79,7 @@ int main (int ac, const char **av)
     pid = fork();
     if (pid == 0) {
         ptrace(PTRACE_TRACEME, NULL, NULL, NULL); // we place a tracer on the child
-        execvp(av[1], av + 1);
+        execvp(av[1], (char * const *)av + 1);
     }
     else {
         //analyse child here
@@ -116,7 +116,7 @@ int main (int ac, const char **av)
     pid = fork();
     if (pid == 0) {
         ptrace(PTRACE_TRACEME, NULL, NULL, NULL);
-        execvp(av[1], av + 1);
+        execvp(av[1], (char * const *)av + 1);
     }
     else {
         ptrace(PTRACE_GETREGS, pid, NULL, &regs);
@@ -145,7 +145,7 @@ int main (int ac, const char **av)
     pid = fork();
     if (pid == 0) {
         ptrace(PTRACE_TRACEME, NULL, NULL, NULL);
-        execvp(av[1], av + 1);
+        execvp(av[1], (char * const *)av + 1);
     }
     else {
         waitpid(pid, &status, 0);
@@ -192,7 +192,7 @@ int main (int ac, const char **av)
     pid = fork();
     if (pid == 0) {
         ptrace(PTRACE_TRACEME, NULL, NULL, NULL);
-        execvp(av[1], av + 1);
+        execvp(av[1], (char * const *)av + 1);
     }
     else {
         waitpid(pid, &status, 0);
