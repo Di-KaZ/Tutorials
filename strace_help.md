@@ -14,7 +14,7 @@ If you have all of that welcome aboard !
 Getting started
 ==============
 
-The goal is to create a program able to print all *syscall* of a given *binary* or *pid* like this :
+The goal is to create a program able to print all **syscall** of a given **binary** or **pid** like this :
 ```
 ./strace [-s] [-p <pid>|<command>]
 ```
@@ -44,31 +44,31 @@ int main (int ac, const char **av)
     return (0);
 }
 ```
-The pid is going to be really important, he gonna help us *trace* the program with the help of [ptrace()](http://manpagesfr.free.fr/man/man2/ptrace.2.html) !
+The pid is going to be really important, he gonna help us **trace** the program with the help of [ptrace()](http://manpagesfr.free.fr/man/man2/ptrace.2.html) !
 For the pid you don't need to excute it you just need to trace it with the pid passed as parameter of your main function.
 
 Ptrace
 ======
 
 When you become familiar with exec and fork it's time to use [ptrace()](http://manpagesfr.free.fr/man/man2/ptrace.2.html) !
-Some of its flag are going to be useful for us since we can't use *PTRACE_SYSCALL*.
+Some of its flag are going to be useful for us since we can't use **PTRACE_SYSCALL**.
 here is a list :
 1. PTRACE_TRACEME
 2. PTRACE_GETREGS
 3. PTRACE_PEEKTEXT
 4. PTRACE_SINGLESTEP
 
-*PTRACE_TRACEME* is going to help us trace our child like a gps on a child phone to know where he is.
-*PTRACE_GETREGS* get a register structure used to know which syscall where on and argument passed in.
-*PTRACE_PEEKTEXT* is for analysing the adress of the instruction currently stopped on, with that return value we can know if the current insctruction is a syscall or not. It's like checking were the child phone is located on the map and see is is at the adress 35 street valley.
-*PTRACE_SINGLESETP* used to stop at each instruction of the program. This is going to send signal to the child to stop him at each instruction.
+**PTRACE_TRACEME** is going to help us trace our child like a gps on a child phone to know where he is.
+**PTRACE_GETREGS** get a register structure used to know which syscall where on and argument passed in.
+**PTRACE_PEEKTEXT** is for analysing the adress of the instruction currently stopped on, with that return value we can know if the current insctruction is a syscall or not. It's like checking were the child phone is located on the map and see is is at the adress 35 street valley.
+**PTRACE_SINGLESETP** used to stop at each instruction of the program. This is going to send signal to the child to stop him at each instruction.
 
 we that in mind I know that you can see were we are going !
 
 The child
 ========
 
-Reusing the code from the above fork sample code we now have to trace our child with...*PTRACE_TRACEME* :
+Reusing the code from the above fork sample code we now have to trace our child with...**PTRACE_TRACEME**:
 
 ```C
 int main (int ac, const char **av)
@@ -96,10 +96,10 @@ The Parent
 Let's get right into it guy's !
 Now that we have a tracer on th child it's time to use it.
 With what we know about ptrace it's almost easy as making pasta !
-First *PTRACE_GETREGS* is going to take a pointer to a *struct user_regs_struct* and store the register of the syscall in it.
-once we have the register we need to check if the instruction is a syscall using *PTRACE_PEEKTEXT* (i'll talk about it's return value later)
-and at the end we need to stop the program at the next instructions using *PTRACE_SIGNLESTEP*
-With the return value of *PTRACE_PEEKTEXT* we can know if the instruction is a syscall the two different value are 0x80CD and 0x50F.
+First **PTRACE_GETREGS** is going to take a pointer to a **struct user_regs_struct** and store the register of the syscall in it.
+once we have the register we need to check if the instruction is a syscall using **PTRACE_PEEKTEXT** (i'll talk about it's return value later)
+and at the end we need to stop the program at the next instructions using **PTRACE_SIGNLESTEP**
+With the return value of **PTRACE_PEEKTEXT** we can know if the instruction is a syscall the two different value are 0x80CD and 0x50F.
 If it is a syscall we have to print it using the registers saved previously.
 
 here's the code (not tested) :
@@ -168,7 +168,7 @@ when it's done WP you are tracing all the syscall of the program the last thing 
 Displaying syscall
 =================
 
-Ok for this part i'm gonna do everything since it's easy, in the last part we got the register using *PTRACE_GETREGS*.
+Ok for this part i'm gonna do everything since it's easy, in the last part we got the register using **PTRACE_GETREGS**.
 We are going to use it to display all syscall to write, but first I need to learn you thing about this structure field :
 
 *struct user_regs_struct regs filed that we gonna use*
