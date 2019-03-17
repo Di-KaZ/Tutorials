@@ -205,6 +205,7 @@ int main (int ac, const char **av)
             if (type == 0x80CD ||type == 0x50F)
                 if (regs.rax == 1) // write id is 1
                     printf("write (0x%llx, 0x%llx, 0x%llx) = 0x%llx", regs.rsi, regs.r8, regs.rdi); // 3 argument for write
+                    fflush(stdout);
         }
     }
     return (0);
