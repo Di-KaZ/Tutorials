@@ -24,7 +24,7 @@ When this is done we can go deeper !
 Binary or pid ?
 ==============
 
-If we pass a binary in args we should excute it with [fork()](http://manpagesfr.free.fr/man/man2/fork.2.html) and [exec family function](http://manpagesfr.free.fr/man/man3/exec.3.html), but is it's an pid that we recive we don't have to execute it beacause he is aleready in execution.
+If we pass a binary in args we should excute it with [fork()](http://manpagesfr.free.fr/man/man2/fork.2.html) and [exec family function](http://manpagesfr.free.fr/man/man3/exec.3.html), but is it's an pid that we recive we don't have to execute it because he is already in execution.
 Here is a sample code using fork() function:
 
 ```C
@@ -94,7 +94,7 @@ The Parent
 ==========
 
 Let's get right into it guy's !
-Now that we have a tracer on th child it's time to use it.
+Now that we have a tracer on the child it's time to use it.
 With what we know about ptrace it's almost easy as making pasta !
 First **PTRACE_GETREGS** is going to take a pointer to a **struct user_regs_struct** and store the register of the syscall in it.
 once we have the register we need to check if the instruction is a syscall using **PTRACE_PEEKTEXT** (i'll talk about it's return value later)
