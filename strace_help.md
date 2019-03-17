@@ -214,5 +214,7 @@ int main (int ac, const char **av)
 
 Done ! now we trace all syscall to write and print it to stdout all you need to do is to find a way to generalyse this with all syscall.
 [Here](https://filippo.io/linux-syscall-table/) is a list of all possible syscall with their id and arguments Godd Luck !
+Since i'm a good guy i'm going to give you some track :
+you can use a struct that save the name of the syscall and the number of paramaters this can help you display every syscall !
 
 Out !
